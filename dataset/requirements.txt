@@ -1,0 +1,6 @@
+nltk
+tqdm
+unidecode
+inflect
+numpy
+pydub
