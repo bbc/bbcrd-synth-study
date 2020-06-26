@@ -152,17 +152,3 @@ python3 shorten_silence.py ./output_folder/wavs 500
 ```
 
 **Warning**: the script operates on the `wavs` folder previously created and makes changes in place so you may want to keep a copy of the original directory.
-
-## 5. Package data
-
-The resulting `output_folder` has a `metadata.csv` file and a `wavs` folder. You will need to package it as an archive.
-
-If you are on a **Linux**-based machine:
-```
-tar -czf output_dataset.tar.gz output_dataset
-```
-
-Due to [incompatibility issues](https://superuser.com/questions/318809/linux-os-x-tar-incompatibility-tarballs-created-on-os-x-give-errors-when-unt), in **MacOS**, you should use gtar instead:
-```
-gtar -czf output_dataset.tar.gz output_dataset
-```
