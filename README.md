@@ -4,7 +4,7 @@ This repository is a collection of scripts and guidelines that BBC R&D produced 
 
 # Requirements
 
-The tools included inside [dataset](./dataset) were written in **Python 3**, however, the [DC_TTS implementation](https://github.com/Kyubyong/dc_tts) used for training and synthesizing the voice was written in **Python 2**. This will require you to set up two different Anaconda environments. Just remember to activate the necessary Anaconda environment before you start working with the dataset or synthesis code. You can find more information inside the [dataset](./dataset) and the [synthesis](./synthesis) sections. 
+The tools included inside [dataset](./dataset) were written in **Python 3**, however, the [DC_TTS implementation](https://github.com/bbc/dc_tts) (forked from [Kyubyong's repo](https://github.com/Kyubyong/dc_tts)) used for training and synthesizing the voice was written in **Python 2**. This will require you to set up two different Anaconda environments. Just remember to activate the necessary Anaconda environment before you start working with the dataset or synthesis code. You can find more information inside the [dataset](./dataset) and the [synthesis](./synthesis) sections. 
 
 # Creating a training dataset
 
