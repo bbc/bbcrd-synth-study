@@ -3,7 +3,7 @@
 In this section you will find out how to use a trained model in order to synthesize speech from text. As mentioned in the main [README](../README.md) file, the code required for synthesizing the voice was written in Python 2.
 
 ### 1. Acquiring a model
-To learn how to create and download a model, please visit the [train](../train) section.
+To learn how to create and download a model, please visit the [train](../train) section. If you just want to quickly experiment with a pre-trained model you can download [Kyobyong](https://github.com/Kyubyong)'s [pre-trained model](https://github.com/Kyubyong/dc_tts#pretrained-model-for-lj)
 
 You should end up with a `models` folder with the following structure:
 
