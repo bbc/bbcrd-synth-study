@@ -54,9 +54,9 @@ Copy your trained model (or our pre-trained one) into a `models` folder in the r
 
 ### 6. Run synthesize_example.py
 
-Update `synthesize-example.py` with the path of your models and simply run it:
+Update `synthesize_example.py` with the path of your models and simply run it:
 ```
-python2 synthesize-example.py
+python2 synthesize_example.py
 ```
 
 
