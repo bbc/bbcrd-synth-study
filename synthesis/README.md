@@ -2,8 +2,18 @@
 
 In this section you will find out how to use a trained model in order to synthesize speech from text. As mentioned in the main [README](../README.md) file, the code required for synthesizing the voice was written in Python 2.
 
+### Prerequisites
+
+The code for synthesizing voice can be found in the same repo as we mentioned in the [train](../train) section. If you haven't done so already, or you prefer to separate your train and synthesis working folders, clone [our DC_TTS fork](https://github.com/bbc/dc_tts):
+```
+git clone https://github.com/bbc/dc_tts
+cd dc_tts
+```
+
 ### 1. Acquiring a model
-To learn how to create and download a model, please visit the [train](../train) section. If you just want to quickly experiment with a pre-trained model you can download [Kyobyong](https://github.com/Kyubyong)'s [pre-trained model](https://github.com/Kyubyong/dc_tts#pretrained-model-for-lj)
+To learn how to create and download a model, please visit the [train](../train) section. If you just want to quickly experiment with a pre-trained model you can download our [pretrained model](https://www.dropbox.com/s/dum57sx8cmtugol/ljspeech_model_v1.2.tar.gz?dl=0). 
+
+*(Note: The model found in Kyubyong's repo was trained using a different set of symbols, hence, it would be incompatible with our current setup.)*
 
 You should end up with a `models` folder with the following structure:
 
@@ -38,15 +48,11 @@ pip install -r requirements.txt
 
 The basic difference is that with requirements.txt, tensorflow_gpu will be installed instead of tensorflow.
 
-### 5. Copy our synthesise scripts
+### 5. Copy your trained model
 
-We rewrote the synthesiser script included in [dc_tts](https://github.com/Kyubyong/dc_tts), making it easier to use and with better chunking. Take [synthesize.py](./synthesize.py) and [synthesize-example.py](./synthesize-example.py) and place them at the root of your copy of [dc_tts](https://github.com/Kyubyong/dc_tts).
+Copy your trained model (or our pre-trained one) into a `models` folder in the root of your copy of [dc_tts](https://github.com/bbc/dc_tts).
 
-### 6. Copy your trained model
-
-Copy your trained model into a `models` folder in the root of your copy of [dc_tts](https://github.com/Kyubyong/dc_tts).
-
-### 7. Run synthesize_example.py
+### 6. Run synthesize_example.py
 
 Update `synthesize-example.py` with the path of your models and simply run it:
 ```
