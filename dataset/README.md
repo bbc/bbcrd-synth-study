@@ -57,7 +57,8 @@ utterance2.wav|This is test utterance number 2.|This is test utterance number tw
 ## Links
 
 This dataset can be downloaded from the [official LJSpeech web site](https://keithito.com/LJ-Speech-Dataset/). 
-If you want to use our implementation, you must replace the `metadata.csv` file in that dataset with our
+
+**IMPORTANT:** If you want to use our implementation, you must replace the `metadata.csv` file in that dataset with our
 own which can be found [here](https://www.dropbox.com/s/mp447dxsovi9xi6/metadata.csv?dl=0).
 In our version, some changes have been made to the normalized utterance transcriptions.
 In particular, hyphens (outside words) are converted to semicolons, in order to use them when

@@ -1,6 +1,6 @@
 # Training
 
-To create a synthetic voice you can use [this implementation](https://github.com/Kyubyong/dc_tts) of [Efficiently Trainable Text-to-Speech System Based on Deep Convolutional Networks with Guided Attention](https://arxiv.org/abs/1710.08969).
+To create a synthetic voice you can use [our DC_TTS fork](https://github.com/bbc/dc_tts) of Kyubyong's wonderfull [implementation](https://github.com/Kyubyong/dc_tts) of [Efficiently Trainable Text-to-Speech System Based on Deep Convolutional Networks with Guided Attention](https://arxiv.org/abs/1710.08969).
 
 ---
 
@@ -30,19 +30,10 @@ The SSRN network usually requires less time. In this experiment it was trained f
 
 # Setup
 
-If you are using the provided corpus, you will want to update the vocabulary of the neural network. You can do so by updating [this line](https://github.com/Kyubyong/dc_tts/blob/master/hyperparams.py#L38):
+You can download a model that we trained on the [LJ Speech Dataset](https://keithito.com/LJ-Speech-Dataset/) from [here](https://www.dropbox.com/s/dum57sx8cmtugol/ljspeech_model_v1.2.tar.gz?dl=0).
+This model is different than the one found in Kyubyong's repo as it has been trained using a different vocabulary (set of symbols) and it is compatible with the rest of our code.
+[this line](https://github.com/bbc/dc_tts/blob/c96748dd9a651840e7a6633f9b6444d3938684f2/hyperparams.py#L43) configures the set of symbols that are used throught the system and it must be consistent with the characters found in the Dataset's metadata.csv file (as mentioned [here](../dataset/README.md)) and the trained model.
 
-From
-```
-vocab = "PE abcdefghijklmnopqrstuvwxyz'.?" # P: Padding, E: EOS.
-```
-
-To
-```
-vocab = "PE abcdefghijklmnopqrstuvwxyz'.?,;" # P: Padding, E: EOS.
-```
-
-This gives us a bit more control over pauses. As a result, you will also need to train your own version of the [LJ Speech Dataset](https://keithito.com/LJ-Speech-Dataset/) which you will use as the foundation for your training. 
 
 ### SSRN Training
 
