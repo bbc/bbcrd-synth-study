@@ -20,4 +20,4 @@ Please take a look inside [synthesis](./synthesis) for more information on synth
 
 # Articles
 
-We wrote [a series of articles]([https://voicestudy.api.bbc.co.uk/learn]) detailing our process and technical choices.
+We wrote [a series of articles](https://voicestudy.api.bbc.co.uk/learn) detailing our process and technical choices.
