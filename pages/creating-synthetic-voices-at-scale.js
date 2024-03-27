@@ -68,7 +68,7 @@ const CreatingSyntheticVoicesAtScale = () => {
 						<section>
 							<p>In 2020, <a target='_blank' rel='noopener noreferrer' href='https://www.bbc.co.uk/rd'>BBC R&D</a> launched an online study looking at voice assistants and regional accents. By and large, voice assistants such as Siri or Alexa are uniform at language level. They exist in two variants, male and female – the default. You have a French Siri and a British Siri, an American one and an Italian one. These devices sit in our homes, in our living rooms and kitchens expecting we speak to them naturally. People across the world speak to them in a multitude of accents and twangs and yet, these assistants reply uniformly with the same tone and accent for everyone in every situation. There’s no personalisation in the most personal space: your home.</p>
 
-							<figure><img src='/static/images/devices.svg' alt='A home scene with voice-enabled devices' /></figure>
+							<figure><img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/devices.svg`} alt='A home scene with voice-enabled devices' /></figure>
 
 							<p>In this series of three articles, we’ll present the steps we took to build 24 synthetic voices with accents that broadly cover the UK nations and regions. Here, we’ll endeavour to give detailed explanations of the methods used and you can head to our <a target='_blank' rel='noopener noreferrer' href='https://github.com/bbc/bbcrd-synth-study'>Github repository</a> to find a more technical walkthrough. Continue reading to understand the challenges we faced and the choices we made to overcome them.</p>
 
@@ -103,14 +103,14 @@ const CreatingSyntheticVoicesAtScale = () => {
 
 							<p>The reason this method is so much faster than Tacotron (parts of which are used under the hood) is that it doesn’t need to be trained from scratch every time. Once you have a very well trained voice model, one created with a large dataset, it gives you the foundations to create another voice. The idea is that much of speech is common and you just need to tweak it for each person based on what makes their voice sound unique. So you extract that fingerprint — called “embedding” — from a very short sample and you tune the base model to reflect the differences.</p>
 
-							<figure><img src='/static/images/articles/sv2tts.png' alt='A very high level diagram of how SV2TTS works' /><figcaption>A very high level diagram of how SV2TTS works</figcaption></figure>
+							<figure><img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/articles/sv2tts.png`} alt='A very high level diagram of how SV2TTS works' /><figcaption>A very high level diagram of how SV2TTS works</figcaption></figure>
 
 							<p>A few seconds of audio might be good enough to copy the timbre of a voice, but it’s not enough to capture someone’s accent so we couldn’t really expect that to perform well for our task. However, the core idea of reusing a base model and tuning it could still apply if we had a more extensive — but still short — dataset for each of the accents. Instead of extracting an embedding, we could train directly on top of the base voice. Doing this with Tacotron, because of its recurrent neural network architecture, would still mean long and expensive training times for a voice quality we didn’t require.</p>
 
 							<SectionDivider {...toc[2]} ref={toc[2].ref} />
 							<p>With this in mind, we tried another architecture for text-to-speech voice generation that uses <a target='_blank' rel='noopener noreferrer' href='https://arxiv.org/abs/1710.08969'>deep convolutional neural networks</a>. Because there are no recurrent units in the network, it can be trained more quickly and cheaply. The examples provided on the various available packages convinced us that the output quality was suitable. Using the public domain <a target='_blank' rel='noopener noreferrer' href='https://keithito.com/LJ-Speech-Dataset/'>LJ speech dataset</a> we trained a base model that we could tune by continuing the training but with a regional dataset instead.</p>
 
-							<figure><img src='/static/images/articles/model-tuning.png' alt='A very high level diagram of our solution' /><figcaption>A very high level diagram of our solution</figcaption></figure>
+							<figure><img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/articles/model-tuning.png`} alt='A very high level diagram of our solution' /><figcaption>A very high level diagram of our solution</figcaption></figure>
 
 							<div className='with-sidenote'>
 								<p>The LJ dataset is a single person reading public domain audio books from <a target='_blank' rel='noopener noreferrer' href='http://www.gutenberg.org/'>Project Gutenberg</a>. In the same spirit, we recorded 1.5 hours of one of our colleagues from Yorkshire reading another public domain book. Lo and behold, the results were astounding. With less than £25 worth of computing time, we cloned the voice of one of our colleagues with an uncanny quality and his accent pretty much intact.</p>
@@ -147,14 +147,14 @@ const CreatingSyntheticVoicesAtScale = () => {
 
 							<p>Once you’ve covered all combinations, you look at the phonetic distribution of your corpus and keep tweaking to get it to match a baseline distribution. Remove a “th” and add an “ee” and so on until you have a balanced corpus.</p>
 
-							<figure><img src='/static/images/articles/corpus-building-1.png' alt='The process to build a sentence for a phonetically balanced corpus' /><figcaption>The process to build a sentence for a phonetically balanced corpus</figcaption></figure>
+							<figure><img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/articles/corpus-building-1.png`} alt='The process to build a sentence for a phonetically balanced corpus' /><figcaption>The process to build a sentence for a phonetically balanced corpus</figcaption></figure>
 
 							<p>This is a pretty lengthy task and creating over 900 sentences manually seemed too hard, particularly if we wanted them to sound conversational. Moreover, we still needed a baseline to compare against. In some papers, including VOXMEX, they use a standard dictionary to estimate the distribution of phonemes. However, dictionaries contain words that are rarely used and words that are used multiple times in a paragraph. To find the actual distribution of phonemes, we’d need access to do the same task on large amount of speech.</p>
 
 							<SectionDivider {...toc[5]} ref={toc[5].ref} />
 							<p>Fortunately, the BBC has subtitles for the majority of its broadcasts in English. Subtitles reflect what’s spoken on screen by actors, so we suspected that they would have more of the conversational qualities we were after. The subtitles dump we had access to contained hundreds of thousands of subtitles, amounting to 5Gb worth of text. All we had to do was write a script to clean them and reassemble broken parts into whole sentences, rejecting everything else: music, sound effects, exclamations, etc.</p>
 
-							<figure><img src='/static/images/articles/phoneme-distrib.png' alt='Comparing the distribution of subtitles vs dictionary vs Harvard Sentences' /><figcaption>Comparing the distribution of subtitles vs dictionary vs Harvard Sentences</figcaption></figure>
+							<figure><img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/articles/phoneme-distrib.png`} alt='Comparing the distribution of subtitles vs dictionary vs Harvard Sentences' /><figcaption>Comparing the distribution of subtitles vs dictionary vs Harvard Sentences</figcaption></figure>
 
 							<p>BBC R&D also works on speech-to-text and for that purpose has access to some very extensive dictionaries which accompany words with their phonetic pronunciation. Additionally, we used a British dictionary, meaning that we’d cover British English more accurately. Having all these sentences transcribed into phonemes, we got two things:</p>
 
@@ -163,13 +163,13 @@ const CreatingSyntheticVoicesAtScale = () => {
 								<li>A list of sentences we could search and pull for their phonetic qualities. Instead of manually constructing sentences, we could use sentences directly from the subtitles. They contain naturally occurring words from a representative corpus and we could assume they would be easy to say since they’ve been said on screen already.</li>
 							</ul>
 
-							<figure><img src='/static/images/articles/corpus-building-2.png' alt='Our corpus building method using subtitles' /><figcaption>Our corpus building method using subtitles</figcaption></figure>
+							<figure><img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/articles/corpus-building-2.png`} alt='Our corpus building method using subtitles' /><figcaption>Our corpus building method using subtitles</figcaption></figure>
 
 							<p>Following a very similar method, we could get a list of all phonemes and pull sentences which had two specific combinations each. Together with these, they’d bring a whole other bag of sounds, which is useful because we need to both bulk up the text (we need it to be ~2hrs) and we need to maintain a proportional representation. And since we’re randomly choosing sentences with a simple enough criteria, we end up with a very small but representative subset of the complete subtitles. As a result, that corpus is just as phonetically balanced as the source and we can generate many different ones.</p>
 
 							<p>Download an example corpus on our <a target='_blank' rel='noopener noreferrer' href='https://github.com/bbc/bbcrd-synth-study'>Github repository</a>.</p>
 
-							<figure><img src='/static/images/articles/corpus-subtitles-correlation.png' alt='This is the distribution of Subtitles vs the new phonetically balanced corpus (99.9% correlation)' /><figcaption>This is the distribution of subtitles vs the new phonetically balanced corpus (99.9% correlation)</figcaption></figure>
+							<figure><img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/articles/corpus-subtitles-correlation.png`} alt='This is the distribution of Subtitles vs the new phonetically balanced corpus (99.9% correlation)' /><figcaption>This is the distribution of subtitles vs the new phonetically balanced corpus (99.9% correlation)</figcaption></figure>
 
 						</section>
 

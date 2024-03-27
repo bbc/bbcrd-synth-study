@@ -4,7 +4,7 @@ let pageConfig = {}
 
 if (isGithubActions) {
 	pageConfig = {
-		basePath: '/synthetic-voice-research',
+		basePath: '/bbcrd-synth-study',
 		images: {
 			unoptimized: true
 		},

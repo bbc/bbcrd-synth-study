@@ -27,14 +27,14 @@ const AudioPlayer = ({ file }) => {
 	return <button onClick={handleOnClick} className={className}>
 		<div className='inside-wrapper'>
 			<div className='progress' style={{ width: `${Math.ceil(progress * 100)}%` }} />
-			<img src='/static/images/play.svg' className='play' alt='Play' />
+			<img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/play.svg`} className='play' alt='Play' />
 			<audio
 				preload='auto'
 				onTimeUpdate={() => setProgress(mediaEl.current.currentTime / mediaEl.current.duration)}
 				onEnded={() => setPlaying(false)}
 				ref={mediaEl}
 			>
-				<source src={`/static/audio/${file}`} type={file.includes('.mp3') ? 'audio/mpeg' : 'audio/wav'} />
+				<source src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/audio/${file}`} type={file.includes('.mp3') ? 'audio/mpeg' : 'audio/wav'} />
 			</audio>
 		</div>
 	</button>

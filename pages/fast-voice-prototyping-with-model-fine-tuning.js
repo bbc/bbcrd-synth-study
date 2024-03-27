@@ -87,7 +87,7 @@ const FastVoicePrototypingWithModelFineTuning = () => {
 							<p>You can think of this as a low resolution picture that get upscaled. The first network generates a rough result. When it’s upscaled, the machine fills in the blanks — augmenting the resolution — using the second network which has learned how to enhance the image specifically for that voice.</p>
 
 							<figure>
-								<img src='/static/images/articles/simplified-model-tuning.png' alt='Simplified DC TTS architecture with model tuning' />
+								<img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/articles/simplified-model-tuning.png`} alt='Simplified DC TTS architecture with model tuning' />
 								<figcaption>Simplified DC TTS architecture with model tuning</figcaption>
 							</figure>
 
@@ -180,7 +180,7 @@ const FastVoicePrototypingWithModelFineTuning = () => {
 							<p>Alternatively, we want to look into how the network processes its input. Right now, we feed the text directly to the network, but a pre-processing step on the input might allow us to better handle abbreviation (UK could be spelled out You Kay) or more ambitiously, we could convert the input to a phonetic transcription and train the network on the phonetic alphabet rather than the Latin alphabet. This would allow us a more precise way to specify the sounds we want to be included and moves the problem of converting English to phonetic further up the chain and out of the neural network path.</p>
 
 							<figure>
-								<img src='/static/images/articles/future-model.png' alt='Converting all input to a phonetic representation to allow more precise control over pronunciation' />
+								<img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/articles/future-model.png`} alt='Converting all input to a phonetic representation to allow more precise control over pronunciation' />
 								<figcaption>Converting all input to a phonetic representation to allow more precise control over pronunciation</figcaption>
 							</figure>
 

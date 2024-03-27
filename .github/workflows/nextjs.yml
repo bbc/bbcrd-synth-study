@@ -24,6 +24,9 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  NEXT_PUBLIC_BASE_PATH: /bbcrd-synth-study
+
 jobs:
   # Build job
   build:

@@ -33,19 +33,19 @@ const Index = () => {
 				</div>
 
 				<ArticleLink
-					imageUrl='/static/images/part-one-red.png'
+					imageUrl={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/part-one-red.png`}
 					href='/creating-synthetic-voices-at-scale'
 					title='Creating Synthetic Voices at Scale'
 					description='Learn about the need for synthetic voices with accents, and our method to create them quickly and cheaply.'
 				/>
 				<ArticleLink
-					imageUrl='/static/images/part-two-red.png'
+					imageUrl={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/part-two-red.png`}
 					href='/fast-voice-prototyping-with-model-fine-tuning'
 					title='Fast Voice Prototyping with Model Fine-Tuning'
 					description='A deep dive into the machine learning approach employed to produce and improve our synthetic voices.'
 				/>
 				<ArticleLink
-					imageUrl='/static/images/part-three-red.png'
+					imageUrl={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/part-three-red.png`}
 					href='/designing-interfaces-to-audition-voices'
 					title='Designing Interfaces to Audition Voices'
 					description='The challenges of designing an interface that reduces potential selection bias, while making the experience enjoyable.'

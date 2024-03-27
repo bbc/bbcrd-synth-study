@@ -70,7 +70,7 @@ const DesigningInterfacesToAuditionVoices = () => {
 							<p>Read <Link href='/creating-synthetic-voices-at-scale'>Part One</Link> to learn how we built a phonetically balanced corpus of text and <Link href='/fast-voice-prototyping-with-model-fine-tuning'>Part Two</Link> to see how we used machine learning to generate voices using that corpus.</p>
 
 							<figure className='no-multiply'>
-								<img src='/static/images/articles/regions.png' alt='List of the divisions of the UK we used in the study' />
+								<img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/articles/regions.png`} alt='List of the divisions of the UK we used in the study' />
 								<figcaption>List of the divisions of the UK we used in the study</figcaption>
 							</figure>
 
@@ -98,7 +98,7 @@ const DesigningInterfacesToAuditionVoices = () => {
 							<p>We chose to investigate three contexts where we thought accent might change the perception of what’s being said and the quality of the interaction: news, local news and the voice of the device itself.</p>
 
 							<figure className='no-multiply'>
-								<img src='/static/images/articles/voice-options.png' alt='The three contexts for the Study participants’ consideration' />
+								<img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/articles/voice-options.png`} alt='The three contexts for the Study participants’ consideration' />
 								<figcaption>The three contexts for the Study participants’ consideration</figcaption>
 							</figure>
 
@@ -120,11 +120,11 @@ const DesigningInterfacesToAuditionVoices = () => {
 
 							<p>By reducing the number of samples, we hopefully reduce the cognitive load linked to tracking which voice the user liked. Additionally, though the grid appeared blank, we made sure to include a “visited” state so listening to the same sample twice would be intentional. The male/female pairs are stacked vertically — which one is on top is randomised each time so as not to give preference to either — and the different accents are placed horizontally.</p>
 
-							<figure><img src='/static/images/articles/voice-grid.png' alt='Randomised grid of voices with different states' /><figcaption>Randomised grid of voices with different states</figcaption></figure>
+							<figure><img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/articles/voice-grid.png`} alt='Randomised grid of voices with different states' /><figcaption>Randomised grid of voices with different states</figcaption></figure>
 
 							<p>Another aspect we had to mitigate was the quality of the voices. Despite our best efforts, some of the processed voices sound better than others, but we didn’t want the quality to influence participants’ choices. Even though the participants are instructed to disregard quality for that part of the study, we had to minimise the bias it could introduce. So we made sure to display the written version of what the voice says in a prominent position, hoping it would reduce problems linked to understanding what the voice is supposed to say. Later in the study, we also ask the user to rate a voice based on its quality and to select from which part of the country they think it originates. This allows us to observe if quality is indeed a factor, and if the accent can be accurately located.</p>
 
-							<figure className='no-multiply'><img src='/static/images/articles/choose-a-voice.png' alt='The complete question interface' /><figcaption>The complete question interface</figcaption></figure>
+							<figure className='no-multiply'><img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/articles/choose-a-voice.png`} alt='The complete question interface' /><figcaption>The complete question interface</figcaption></figure>
 
 							<SectionDivider {...toc[5]} />
 
@@ -141,7 +141,7 @@ const DesigningInterfacesToAuditionVoices = () => {
 							<SectionDivider {...toc[8]} />
 							<p>In an earlier version, the participants were also asked to label their chosen voice with one adjective (Familiar / Friendly / Trustworthy / etc.), with the option to write their own if they felt the need. All of the options were different positive aspects the voice could have. We hoped this would provide insight into the association of particular accents with particular adjectives. With the involvement of Ewan Nicolson from the <a target='_blank' rel='noopener noreferrer' href='https://datalab.rocks/'>BBC’s Datalab</a>, we decided to remove this step to maintain the focus on our main question: do people prefer local voices for certain context? Adding a step to that question could detract from the answer and create unnecessary noise as well as making the study longer to complete.</p>
 
-							<figure className='no-multiply'><img src='/static/images/articles/adjective-question.png' alt='Additional question we removed' /><figcaption>The additional interface that we later removed</figcaption></figure>
+							<figure className='no-multiply'><img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/articles/adjective-question.png`} alt='Additional question we removed' /><figcaption>The additional interface that we later removed</figcaption></figure>
 
 							<p>Since we’re interested in the perceived trustworthiness of synthetic voices, though, we needed a way to capture this feedback. Here we added a single question focused on that point, specifically asking the participant to choose which voice they think sounds the most trustworthy.</p>
 
